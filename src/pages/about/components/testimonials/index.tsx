@@ -1,13 +1,4 @@
-import {
-  Avatar,
-  Box,
-  Card,
-  Container,
-  Grid,
-  Stack,
-  Text,
-  Title,
-} from "@mantine/core";
+import { Box, Container, Grid, Stack, Text, Title } from "@mantine/core";
 import { TestimonialCard } from "./components/testimonial-card";
 
 const testimonials = [
