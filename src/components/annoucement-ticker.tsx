@@ -17,7 +17,7 @@ const marqueeVariants = {
       x: {
         repeat: Infinity,
         repeatType: "loop",
-        duration: 30,
+        duration: 15,
         ease: "linear",
       },
     },
@@ -35,7 +35,6 @@ const AnnouncementTicker = () => {
 
   return (
     <Box bg="primary.5" style={containerStyles}>
-      {/* Duplicamos el contenido para hacer bucle perfecto */}
       <motion.div
         variants={marqueeVariants}
         animate="animate"

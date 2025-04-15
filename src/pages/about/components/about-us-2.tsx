@@ -12,7 +12,7 @@ import {
 
 const AboutUs2 = () => {
   return (
-    <Box py="5rem">
+    <Box id="about2" py="5rem">
       <Container fluid>
         <Grid align="center" gutter="xl">
           <Grid.Col span={{ base: 12, md: 6 }}>
@@ -31,11 +31,6 @@ const AboutUs2 = () => {
                   mezclan estilo, actitud y autenticidad. Somos más que una
                   marca: somos un movimiento.
                 </Text>
-                <Group>
-                  <Button variant="filled" mt="md">
-                    Conócenos más
-                  </Button>
-                </Group>
               </Stack>
             </Group>
           </Grid.Col>

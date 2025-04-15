@@ -40,7 +40,6 @@ const Footer = () => {
 
         <Divider my="xl" />
 
-        {/* Línea inferior */}
         <Group justify="space-between" gap="xs" fz="xs">
           <Text c="dimmed">© 2025 Potentes. All Rights Reserved.</Text>
           <Group gap="sm">

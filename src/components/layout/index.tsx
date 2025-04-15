@@ -3,7 +3,6 @@ import { useDisclosure } from "@mantine/hooks";
 import { Header } from "./components/header";
 import { Navbar } from "./components/navbar";
 import { Outlet } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import Footer from "./components/footer";
 
 const AppLayout = () => {
@@ -32,7 +31,6 @@ const AppLayout = () => {
 
         <AppShell.Main>
           <Outlet />
-          <TanStackRouterDevtools />
         </AppShell.Main>
 
         <Footer />

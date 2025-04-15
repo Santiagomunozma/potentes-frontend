@@ -10,13 +10,14 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { IconArrowRight, IconSwipeDown } from "@tabler/icons-react";
+import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 
 const Jumbotron = () => {
   const { colors } = useMantineTheme();
 
   return (
-    <Stack>
+    <Stack id="jumbotron">
       <Grid gutter="xl" align="center">
         <Grid.Col span={{ xs: 12, md: 6 }}>
           <Box style={{ position: "relative" }}>
@@ -58,14 +59,13 @@ const Jumbotron = () => {
               </Box>
               <Group>
                 <Button
+                  component={Link}
+                  href="/products"
                   variant="filled"
                   fw={400}
                   rightSection={<IconArrowRight size={16} />}
                 >
                   Comprar
-                </Button>
-                <Button variant="outline" fw={400}>
-                  Ver más
                 </Button>
               </Group>
             </Stack>
@@ -77,7 +77,15 @@ const Jumbotron = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Stack justify="center" align="center" gap="0" pt="xl">
+        <Stack
+          onClick={() => {
+            window.location.href = "#aboutUsUrban";
+          }}
+          justify="center"
+          align="center"
+          gap="0"
+          pt="xl"
+        >
           <motion.div
             animate={{ y: [0, 5, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}

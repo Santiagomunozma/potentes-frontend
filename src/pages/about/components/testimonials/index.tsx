@@ -8,6 +8,7 @@ import {
   Text,
   Title,
 } from "@mantine/core";
+import { TestimonialCard } from "./components/testimonial-card";
 
 const testimonials = [
   {
@@ -35,7 +36,7 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   return (
-    <Box>
+    <Box id="testimonialSection">
       <Container>
         <Stack align="center" mb="xl">
           <Title order={2} size="3rem" fw={900} tt="uppercase">
@@ -49,20 +50,12 @@ const TestimonialsSection = () => {
         <Grid gutter="xl">
           {testimonials.map((t, i) => (
             <Grid.Col key={i} span={{ base: 12, sm: 4 }}>
-              <Card withBorder radius="md" p="xl" shadow="none" bg="white">
-                <Stack gap="sm">
-                  <Text size="sm">“{t.content}”</Text>
-                  <Stack gap={0} mt="md">
-                    <Avatar src={t.avatar} size="sm" radius="xl" />
-                    <Text fw={600} size="sm" mt={4}>
-                      {t.name}
-                    </Text>
-                    <Text size="xs" c="gray.5">
-                      {t.location}
-                    </Text>
-                  </Stack>
-                </Stack>
-              </Card>
+              <TestimonialCard
+                name={t.name}
+                content={t.content}
+                avatar={t.avatar}
+                location={t.location}
+              />
             </Grid.Col>
           ))}
         </Grid>
