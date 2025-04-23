@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import {
   Button,
   Card,
@@ -11,9 +11,64 @@ import {
   Container,
   Title,
   Modal,
+  Image,
+  Anchor,
 } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../pages/cart/CartContext";
+
+type CartItem = {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+};
+
+type CartContextType = {
+  cart: CartItem[];
+  subtotal: number;
+  addToCart: (item: CartItem) => void;
+};
+
+const CartContext = createContext<CartContextType | undefined>(undefined);
+
+export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [cart, setCart] = useState<CartItem[]>([]);
+
+  const addToCart = (item: CartItem) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
+      if (existingItem) {
+        return prevCart.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + item.quantity }
+            : cartItem
+        );
+      }
+      return [...prevCart, item];
+    });
+  };
+
+  const subtotal = cart.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+
+  return (
+    <CartContext.Provider value={{ cart, subtotal, addToCart }}>
+      {children}
+    </CartContext.Provider>
+  );
+};
+
+export const useCart = (): CartContextType => {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error("useCart debe usarse dentro de un CartProvider");
+  }
+  return context;
+};
 
 const CheckoutPage = () => {
   const [address, setAddress] = useState("");
@@ -122,6 +177,24 @@ const CheckoutPage = () => {
                     setCardHolderName(event.currentTarget.value)
                   }
                   required
+                />
+              </Stack>
+            )}
+
+            {paymentMethod === "Transferencia Bancaria" && (
+              <Stack>
+                <Title order={6}>Pago por PSE </Title>
+                <Anchor
+                  href="https://ui.pse.com.co/ui/"
+                  style={{ display: "inline-block" }}
+                ></Anchor>
+                <Image
+                  src="https://www.sifer.com.co/wp-content/uploads/2021/02/pse-forma.jpg"
+                  alt="Resumen de compra"
+                  w={50}
+                  h={50}
+                  radius="50%"
+                  style={{ objectFit: "cover", cursor: "pointer" }}
                 />
               </Stack>
             )}

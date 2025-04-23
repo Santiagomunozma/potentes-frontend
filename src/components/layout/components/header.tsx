@@ -102,7 +102,7 @@ const Header = ({ opened, toggle }: HeaderProps) => {
           >
             <IconUser stroke={1} />
           </ActionIcon>
-          <Indicator label={4} size={20} color="primary">
+          <Indicator label={5} size={20} color="primary">
             <ActionIcon
               variant="subtle"
               size="lg"

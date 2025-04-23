@@ -25,6 +25,7 @@ import {
   IconStar,
 } from "@tabler/icons-react";
 import { useState } from "react";
+import { useCart } from "../cart/CartContext";
 
 // Simulando un producto
 const product = {
@@ -71,9 +72,18 @@ const ProductDetailsView = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("Negro");
   const [mainImage, setMainImage] = useState(product.image);
-
+  const { addToCart } = useCart();
   const finalPrice = product.discount ?? product.price;
 
+  const handleAddToCart = () => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: finalPrice,
+      quantity,
+      image: product.image,
+    });
+  };
   return (
     <Box py="xl">
       <Container fluid>
@@ -182,6 +192,7 @@ const ProductDetailsView = () => {
                   leftSection={<IconShoppingCart size={18} />}
                   variant="outline"
                   size="lg"
+                  onClick={handleAddToCart}
                 >
                   Agregar al carrito
                 </Button>

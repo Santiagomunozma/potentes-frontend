@@ -3,72 +3,50 @@ import React, { createContext, useContext, useState } from "react";
 type CartItem = {
   id: string;
   name: string;
-  image: string;
   price: number;
   quantity: number;
+  image: string;
 };
 
 type CartContextType = {
   cart: CartItem[];
-  subtotal: number;
-  updateQuantity: (id: string, quantity: number) => void;
-  removeItem: (id: string) => void;
+  addToCart: (item: CartItem) => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-const initialCart: CartItem[] = [
-  {
-    id: "1",
-    name: "Hoodie Oversized",
-    image:
-      "https://cdn-images.farfetch-contents.com/25/35/77/87/25357787_55465693_600.jpg",
-    price: 180000,
-    quantity: 1,
-  },
-  {
-    id: "2",
-    name: "Pantalón Cargo Street",
-    image:
-      "https://cdn-images.farfetch-contents.com/25/35/77/87/25357787_55465693_600.jpg",
-    price: 145000,
-    quantity: 1,
-  },
-];
-
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cart, setCart] = useState<CartItem[]>(initialCart);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
-  const updateQuantity = (id: string, quantity: number) => {
-    setCart((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, quantity } : item))
-    );
+  const addToCart = (item: CartItem) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
+      if (existingItem) {
+        // Si el producto ya está en el carrito, actualiza la cantidad
+        return prevCart.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + item.quantity }
+            : cartItem
+        );
+      }
+      // Si el producto no está en el carrito, agrégalo
+      return [...prevCart, item];
+    });
   };
-
-  const removeItem = (id: string) => {
-    setCart((prev) => prev.filter((item) => item.id !== id));
-  };
-
-  const subtotal = cart.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
 
   return (
-    <CartContext.Provider
-      value={{ cart, subtotal, updateQuantity, removeItem }}
-    >
+    <CartContext.Provider value={{ cart, addToCart }}>
       {children}
     </CartContext.Provider>
   );
 };
 
-export const useCart = () => {
+export const useCart = (): CartContextType => {
   const context = useContext(CartContext);
   if (!context) {
-    throw new Error("useCart must be used within a CartProvider");
+    throw new Error("useCart debe usarse dentro de un CartProvider");
   }
   return context;
 };
