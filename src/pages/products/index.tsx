@@ -40,7 +40,7 @@ const products = [
   },
   {
     id: "3",
-    name: "Camiseta Skate Style",
+    name: "Camiseta stiven Style",
     image:
       "https://cdn-images.farfetch-contents.com/25/35/77/87/25357787_55465693_600.jpg",
     price: 95000,

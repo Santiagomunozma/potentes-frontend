@@ -9,6 +9,7 @@ import {
 } from "@mantine/core";
 import ProductCard from "../../../components/product-card";
 import { IconArrowRight } from "@tabler/icons-react";
+import { Link } from "@tanstack/react-router";
 
 const products = [
   {
@@ -51,7 +52,7 @@ const products = [
 
 const Products = () => {
   return (
-    <Container py="4rem" fluid>
+    <Container id="products" py="4rem" fluid>
       <Stack gap="lg" align="center">
         <Title order={2} size="3rem" fw={900} tt="uppercase">
           Nuestros Productos
@@ -69,7 +70,12 @@ const Products = () => {
             ))}
           </Grid>
         </Box>
-        <Button variant="filled" rightSection={<IconArrowRight size={16} />}>
+        <Button
+          component={Link}
+          href="/products"
+          variant="filled"
+          rightSection={<IconArrowRight size={16} />}
+        >
           Ver más
         </Button>
       </Stack>

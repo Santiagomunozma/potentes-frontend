@@ -11,7 +11,7 @@ import CartView from "../pages/cart";
 import ProductDetailsView from "../pages/product-details";
 import LoginView from "../pages/login";
 import RegisterView from "../pages/register";
-
+import { CheckoutPage } from "../store";
 const rootRoute = createRootRoute({
   component: AppLayout,
 });
@@ -82,6 +82,12 @@ const registerRoute = createRoute({
   component: RegisterView,
 });
 
+const checkoutPageRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/checkoutpage",
+  component: CheckoutPage,
+});
+
 const routeTree = rootRoute.addChildren([
   homeRoute,
   productsRoute,
@@ -94,6 +100,7 @@ const routeTree = rootRoute.addChildren([
   productDetailsRoute,
   loginRoute,
   registerRoute,
+  checkoutPageRoute,
 ]);
 
 export const router = new Router({ routeTree });

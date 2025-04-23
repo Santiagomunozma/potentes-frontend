@@ -12,44 +12,24 @@ import {
   Title,
 } from "@mantine/core";
 import { IconTrash } from "@tabler/icons-react";
-import { useState } from "react";
+import { Link } from "@tanstack/react-router";
+import { useCart } from "./CartContext";
 
-const initialCart = [
-  {
-    id: "1",
-    name: "Hoodie Oversized",
-    image:
-      "https://cdn-images.farfetch-contents.com/25/35/77/87/25357787_55465693_600.jpg",
-    price: 180000,
-    quantity: 1,
-  },
-  {
-    id: "2",
-    name: "Pantalón Cargo Street",
-    image:
-      "https://cdn-images.farfetch-contents.com/25/35/77/87/25357787_55465693_600.jpg",
-    price: 145000,
-    quantity: 2,
-  },
-];
+type CartItem = {
+  id: string;
+  name: string;
+  image: string;
+  price: number;
+  quantity: number;
+};
 
 const CartView = () => {
-  const [cart, setCart] = useState(initialCart);
-
-  const updateQuantity = (id: string, quantity: number) => {
-    setCart((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, quantity } : item))
-    );
+  const { cart, subtotal, updateQuantity, removeItem } = useCart() as {
+    cart: CartItem[];
+    subtotal: number;
+    updateQuantity: (id: string, quantity: number) => void;
+    removeItem: (id: string) => void;
   };
-
-  const removeItem = (id: string) => {
-    setCart((prev) => prev.filter((item) => item.id !== id));
-  };
-
-  const subtotal = cart.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
 
   return (
     <Box py="xl">
@@ -126,7 +106,9 @@ const CartView = () => {
                   * No incluye envío ni impuestos.
                 </Text>
               </Stack>
-              <Button size="lg">Realizar compra</Button>
+              <Button component={Link} href="/checkoutpage" size="lg">
+                Realizar compra
+              </Button>
             </Group>
           </>
         )}

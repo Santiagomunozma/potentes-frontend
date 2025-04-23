@@ -31,7 +31,7 @@ const product = {
   id: "1",
   name: "Hoodie Oversized Unisex",
   price: 180000,
-  discount: 150000,
+  discount: 130000,
   image:
     "https://cdn-images.farfetch-contents.com/25/35/77/87/25357787_55465693_600.jpg",
   description:

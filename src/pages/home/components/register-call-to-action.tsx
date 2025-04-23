@@ -7,6 +7,7 @@ import {
   Title,
   useMantineTheme,
 } from "@mantine/core";
+import { Link } from "@tanstack/react-router";
 
 const RegisterCallToAction = () => {
   const { colors } = useMantineTheme();
@@ -34,6 +35,8 @@ const RegisterCallToAction = () => {
             otro lado.
           </Text>
           <Button
+            component={Link}
+            href="/register"
             size="lg"
             radius="sm"
             variant="white"

@@ -76,7 +76,15 @@ const Jumbotron = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Stack justify="center" align="center" gap="0" pt="xl">
+        <Stack
+          onClick={() => {
+            window.location.href = "#products";
+          }}
+          justify="center"
+          align="center"
+          gap="0"
+          pt="xl"
+        >
           <motion.div
             animate={{ y: [0, 5, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
