@@ -7,7 +7,6 @@ import { shadcnCssVariableResolver } from "../../cssVariableResolver";
 import { shadcnTheme } from "../../theme";
 
 import "../assets/styles/style.css";
-
 const Providers = () => {
   return (
     <MantineProvider
