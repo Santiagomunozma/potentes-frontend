@@ -13,7 +13,7 @@ import {
 } from "@mantine/core";
 import { IconTrash } from "@tabler/icons-react";
 import { Link } from "@tanstack/react-router";
-import { useCart } from "./CartContext";
+import { useCart } from "../../store";
 
 type CartItem = {
   id: string;
@@ -24,12 +24,7 @@ type CartItem = {
 };
 
 const CartView = () => {
-  const { cart, subtotal, updateQuantity, removeItem } = useCart() as {
-    cart: CartItem[];
-    subtotal: number;
-    updateQuantity: (id: string, quantity: number) => void;
-    removeItem: (id: string) => void;
-  };
+  const { cart, subtotal } = useCart();
 
   return (
     <Box py="xl">
@@ -57,13 +52,6 @@ const CartView = () => {
                   <Table.Tr key={item.id}>
                     <Table.Td>
                       <Group>
-                        <Image
-                          src={item.image}
-                          alt={item.name}
-                          w={60}
-                          h={60}
-                          radius="md"
-                        />
                         <Text>{item.name}</Text>
                       </Group>
                     </Table.Td>
@@ -72,9 +60,6 @@ const CartView = () => {
                       <NumberInput
                         min={1}
                         value={item.quantity}
-                        onChange={(val) =>
-                          updateQuantity(item.id, Number(val) || 1)
-                        }
                         hideControls
                         w={60}
                       />
@@ -83,11 +68,7 @@ const CartView = () => {
                       ${(item.price * item.quantity).toLocaleString("es-CO")}
                     </Table.Td>
                     <Table.Td>
-                      <ActionIcon
-                        onClick={() => removeItem(item.id)}
-                        color="red"
-                        variant="subtle"
-                      >
+                      <ActionIcon color="red" variant="subtle">
                         <IconTrash size={18} />
                       </ActionIcon>
                     </Table.Td>

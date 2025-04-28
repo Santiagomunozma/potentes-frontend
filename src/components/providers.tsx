@@ -7,6 +7,7 @@ import { shadcnCssVariableResolver } from "../../cssVariableResolver";
 import { shadcnTheme } from "../../theme";
 
 import "../assets/styles/style.css";
+import { CartProvider } from "../store";
 const Providers = () => {
   return (
     <MantineProvider
@@ -14,7 +15,9 @@ const Providers = () => {
       cssVariablesResolver={shadcnCssVariableResolver}
     >
       <Notifications />
-      <RouterProvider router={router} />
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
     </MantineProvider>
   );
 };
