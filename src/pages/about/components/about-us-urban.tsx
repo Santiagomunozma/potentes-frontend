@@ -37,9 +37,9 @@ const AboutUsUrban = () => {
                   Sobre Nosotros
                 </Title>
                 <Text c="gray.5" size="md" lh="1.6">
-                  En <strong>POTENTES</strong>, creemos que la ropa no solo se
-                  viste, se vive. Nuestra esencia viene de la calle, de la
-                  cultura urbana, del ruido, del arte, del ritmo y la rebeldía.
+                  En <strong>POTENTES</strong>, nos apasiona ofrecer ropa que no
+                  solo te haga lucir bien, sino que también te haga sentir bien.
+                  Nacimos con la idea de crear prendas versátiles, cómodas.
                 </Text>
                 <Text c="gray.5" size="md" lh="1.6">
                   Desde 2023, venimos rompiendo esquemas con colecciones que

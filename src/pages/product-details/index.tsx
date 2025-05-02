@@ -25,7 +25,7 @@ import {
   IconStar,
 } from "@tabler/icons-react";
 import { useState } from "react";
-import { useCart } from "../cart/CartContext";
+import { useCart } from "../../store";
 
 // Simulando un producto
 const product = {
@@ -81,7 +81,7 @@ const ProductDetailsView = () => {
       name: product.name,
       price: finalPrice,
       quantity,
-      image: product.image,
+      //image: product.image,
     });
   };
   return (

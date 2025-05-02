@@ -21,9 +21,7 @@ const AboutUs2 = () => {
                   Sobre Nosotros
                 </Title>
                 <Text c="gray.5" size="md" lh="1.6">
-                  En <strong>POTENTES</strong>, creemos que la ropa no solo se
-                  viste, se vive. Nuestra esencia viene de la calle, de la
-                  cultura urbana, del ruido, del arte, del ritmo y la rebeldía.
+                  En <strong>POTENTES</strong>,
                 </Text>
                 <Text c="gray.5" size="md" lh="1.6">
                   Desde 2023, venimos rompiendo esquemas con colecciones que

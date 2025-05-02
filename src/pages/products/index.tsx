@@ -4,7 +4,7 @@ import ProductCard from "../../components/product-card";
 const products = [
   {
     id: "1",
-    name: "Hoodie Oversized",
+    name: "POTENTES POOI",
     image:
       "https://cdn-images.farfetch-contents.com/25/35/77/87/25357787_55465693_600.jpg",
     price: 240000,

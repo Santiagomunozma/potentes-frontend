@@ -4,7 +4,6 @@ import {
   Button,
   Container,
   Group,
-  Image,
   NumberInput,
   Stack,
   Table,
@@ -14,14 +13,6 @@ import {
 import { IconTrash } from "@tabler/icons-react";
 import { Link } from "@tanstack/react-router";
 import { useCart } from "../../store";
-
-type CartItem = {
-  id: string;
-  name: string;
-  image: string;
-  price: number;
-  quantity: number;
-};
 
 const CartView = () => {
   const { cart, subtotal } = useCart();

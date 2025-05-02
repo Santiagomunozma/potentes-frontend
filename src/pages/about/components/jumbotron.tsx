@@ -51,10 +51,10 @@ const Jumbotron = () => {
                   TIENDA DE ROPA
                 </Title>
                 <Text mt="md" c="dimmed">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quisquam, quos. Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Quisquam, quos.
+                  En <strong>Potentes POOI</strong>, no solo vendemos ropa,
+                  ofrecemos una experiencia. Mas que una tienda, somos una
+                  comunidad que apoya el estilo unico de cada persona,
+                  impulsando la confianza.
                 </Text>
               </Box>
               <Group>
