@@ -50,9 +50,7 @@ const UsersPage = () => {
 
         <CreateFormModal opened={opened} close={close} />
 
-        <Grid mb="lg">
-          <StatsCards stats={stats} />
-        </Grid>
+        <StatsCards stats={stats} />
 
         <Group justify="space-between" mb="md">
           <Tabs defaultValue="clients">
