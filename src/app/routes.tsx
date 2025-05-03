@@ -3,7 +3,7 @@ import { AppLayout } from "../components/layout";
 import { Home } from "../pages/home";
 import { Products } from "../pages/products";
 import { About } from "../pages/about";
-import UsersPage from "../pages/users";
+import UsersPage from "../pages/users-management";
 import ProductsManagementPage from "../pages/products-management";
 import SellsManagementPage from "../pages/sells-management";
 import { CuponesPage } from "../pages/cupones";

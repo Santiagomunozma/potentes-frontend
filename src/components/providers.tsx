@@ -8,17 +8,24 @@ import { shadcnTheme } from "../../theme";
 
 import "../assets/styles/style.css";
 import { CartProvider } from "../store";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
 const Providers = () => {
   return (
-    <MantineProvider
-      theme={shadcnTheme}
-      cssVariablesResolver={shadcnCssVariableResolver}
-    >
-      <Notifications />
-      <CartProvider>
-        <RouterProvider router={router} />
-      </CartProvider>
-    </MantineProvider>
+    <QueryClientProvider client={queryClient}>
+      {" "}
+      <MantineProvider
+        theme={shadcnTheme}
+        cssVariablesResolver={shadcnCssVariableResolver}
+      >
+        <Notifications />
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
+      </MantineProvider>
+    </QueryClientProvider>
   );
 };
 

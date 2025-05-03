@@ -9,7 +9,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { CreateFormModal } from "./components/create-form-modal";
-import { ProductsTable } from "./components/products-table";
+import { ProductsTable } from "./products-table";
 import { StatsCards } from "../../components/stats-cards";
 
 const stats = [

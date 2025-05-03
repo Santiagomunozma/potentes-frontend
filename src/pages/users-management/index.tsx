@@ -11,7 +11,7 @@ import {
 import { IconDownload } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 import { CreateFormModal } from "./components/create-form-users";
-import { Userstable } from "./components/users-table";
+import { Userstable } from "./users-table";
 import { StatsCards } from "../../components/stats-cards";
 
 const stats = [
