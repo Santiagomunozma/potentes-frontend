@@ -1,8 +1,8 @@
 import { Button, Group, Modal, Stack } from "@mantine/core";
 import { FormProvider, useForm } from "react-hook-form";
-import { TextInputField } from "../../../components/inputs/text-input";
-import { NumberInputField } from "../../../components/inputs/number-input";
-import { SelectField } from "../../../components/inputs/select-input";
+import { TextInputField } from "../../../../components/inputs/text-input";
+import { NumberInputField } from "../../../../components/inputs/number-input";
+import { SelectField } from "../../../../components/inputs/select-input";
 
 interface couponFormData {
   code: string;
@@ -85,3 +85,4 @@ const CreateFormModal = ({ opened, close }: CreateFormCouponsProps) => {
 };
 
 export { CreateFormModal };
+export type { couponFormData };
