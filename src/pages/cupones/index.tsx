@@ -14,7 +14,7 @@ import {
 import { IconTicket } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 import { CreateFormModal } from "./components/create-form-coupons";
-import { CouponsTable } from "./components/coupons-table";
+import { CouponsTable } from "./coupons-table";
 
 const StatCard = ({
   label,
