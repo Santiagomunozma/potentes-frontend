@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { Coupon } from "../../../types/coupons";
 import { potentesApi } from "../../../utils/api";
+import { Response } from "../../../types/response";
 
 const useGetCoupons = () => {
-  return useQuery<Coupon[], Error>({
+  return useQuery<Response<Coupon[]>, Error>({
     queryKey: ["coupons"],
     queryFn: async () => {
-      const response = await potentesApi.get<Coupon[]>("/coupons");
+      const response = await potentesApi.get<Response<Coupon[]>>("/coupons");
       return response.data;
     },
   });

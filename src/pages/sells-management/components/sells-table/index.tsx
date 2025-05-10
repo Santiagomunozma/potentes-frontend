@@ -34,7 +34,7 @@ const SellsTable = () => {
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody>
-            {sales.map((sale) => (
+            {sales.data.map((sale) => (
               <Table.Tr key={sale.id}>
                 <Table.Td>{sale.id}</Table.Td>
                 <Table.Td>

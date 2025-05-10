@@ -6,6 +6,7 @@ import {
   Image,
   Loader,
   Menu,
+  Select,
   Stack,
   Table,
   Text,
@@ -28,14 +29,13 @@ const ProductsTable = () => {
             <Table.Tr>
               <Table.Th>Producto</Table.Th>
               <Table.Th>SKU</Table.Th>
-              <Table.Th>Stock</Table.Th>
               <Table.Th>Precio</Table.Th>
               <Table.Th>Estado</Table.Th>
               <Table.Th align="right"></Table.Th>
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody>
-            {products.map((product) => (
+            {products.data.map((product) => (
               <Table.Tr key={product.sku}>
                 <Table.Td>
                   <Group>
@@ -49,7 +49,6 @@ const ProductsTable = () => {
                   </Group>
                 </Table.Td>
                 <Table.Td>{product.sku}</Table.Td>
-                <Table.Td>{product.stock}</Table.Td>
                 <Table.Td>{product.price}</Table.Td>
                 <Table.Td>
                   <Badge color={product.status === "active" ? "green" : "red"}>

@@ -30,7 +30,7 @@ const Products = () => {
           </Text>
           <Box py="xl" w="100%">
             <Grid gutter="lg">
-              {products.map((product) => (
+              {products.data.map((product) => (
                 <Grid.Col key={product.sku} span={{ base: 12, sm: 6, md: 3 }}>
                   <ProductCard {...product} />
                 </Grid.Col>

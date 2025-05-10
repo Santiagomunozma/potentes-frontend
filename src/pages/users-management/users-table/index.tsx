@@ -34,7 +34,7 @@ const Userstable = () => {
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody>
-            {users.map((user) => (
+            {users.data.map((user) => (
               <Table.Tr key={user.email}>
                 <Table.Td>
                   <Group>

@@ -7,13 +7,18 @@ import {
   Stack,
   Table,
   Text,
+  Select,
 } from "@mantine/core";
 import { IconDotsVertical } from "@tabler/icons-react";
 import { useGetCoupons } from "./service";
+import { useGetColors } from "../../colors/colors-table/service";
+import { useGetSizes } from "../../sizes/sizes-table/service";
 import dayjs from "dayjs";
 
 const CouponsTable = () => {
   const { data: coupons, error, isSuccess, isError } = useGetCoupons();
+  const { data: colors } = useGetColors();
+  const { data: sizes } = useGetSizes();
 
   if (isError) {
     return <Text c="red">Error: {error.message}</Text>;
@@ -32,11 +37,13 @@ const CouponsTable = () => {
               <Table.Th>Fecha fin</Table.Th>
               <Table.Th>Usos</Table.Th>
               <Table.Th>Estado</Table.Th>
+              <Table.Th>Color</Table.Th>
+              <Table.Th>Talla</Table.Th>
               <Table.Th align="right"></Table.Th>
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody>
-            {coupons.map((coupon) => (
+            {coupons.data.map((coupon) => (
               <Table.Tr key={coupon.id}>
                 <Table.Td>{coupon.id}</Table.Td>
                 <Table.Td>
@@ -54,6 +61,32 @@ const CouponsTable = () => {
                   <Badge color={coupon.status === "active" ? "green" : "gray"}>
                     {coupon.status === "active" ? "Activo" : "Inactivo"}
                   </Badge>
+                </Table.Td>
+                <Table.Td>
+                  <Select
+                    data={
+                      colors?.data.map((color) => ({
+                        value: color.id,
+                        label: color.color,
+                      })) || []
+                    }
+                    placeholder="Seleccionar color"
+                    searchable
+                    clearable
+                  />
+                </Table.Td>
+                <Table.Td>
+                  <Select
+                    data={
+                      sizes?.data.map((size) => ({
+                        value: size.id,
+                        label: size.size,
+                      })) || []
+                    }
+                    placeholder="Seleccionar talla"
+                    searchable
+                    clearable
+                  />
                 </Table.Td>
                 <Table.Td align="right">
                   <Menu shadow="md" position="bottom-end" withArrow>

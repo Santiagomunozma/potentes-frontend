@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { potentesApi } from "../../../utils/api";
 import { Size } from "../../../types/sizes";
+import { Response } from "../../../types/response";
 
 const useGetSizes = () => {
-  return useQuery<Size[], Error>({
+  return useQuery<Response<Size[]>, Error>({
     queryKey: ["sizes"],
-    queryFn: () => potentesApi.get("/sizes"),
+    queryFn: async () =>
+      (await potentesApi.get<Response<Size[]>>("/sizes")).data,
   });
 };
 

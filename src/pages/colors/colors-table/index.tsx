@@ -30,7 +30,7 @@ const ColorsTable = () => {
             </Table.Tr>
           </TableThead>
           <Table.Tbody>
-            {colors.map((color) => (
+            {colors.data.map((color) => (
               <Table.Tr key={color.id}>
                 <Table.Td>{color.id}</Table.Td>
                 <Table.Td>

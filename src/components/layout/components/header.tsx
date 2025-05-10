@@ -89,6 +89,12 @@ const Header = ({ opened, toggle }: HeaderProps) => {
                 <Menu.Item onClick={() => handleNavigation("/coupons")}>
                   Cupones
                 </Menu.Item>
+                <Menu.Item onClick={() => handleNavigation("/sizes")}>
+                  Tallas
+                </Menu.Item>
+                <Menu.Item onClick={() => handleNavigation("/colors")}>
+                  Colores
+                </Menu.Item>
               </Menu.Dropdown>
             </Menu>
           </Group>

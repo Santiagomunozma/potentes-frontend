@@ -30,7 +30,7 @@ const SizesTable = () => {
             </Table.Tr>
           </TableThead>
           <Table.Tbody>
-            {sizes.map((size) => (
+            {sizes.data.map((size) => (
               <Table.Tr key={size.id}>
                 <Table.Td>{size.id}</Table.Td>
                 <Table.Td>
