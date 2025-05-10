@@ -9,9 +9,9 @@ import {
 } from "@mantine/core";
 import { IconTicket } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
-import { CreateFormModal } from "./components/create-form-modal";
 import { CouponsTable } from "./coupons-table";
 import { StatsCards } from "../../components/stats-cards";
+import { CreateFormCouponModal } from "./components/create-form-modal";
 
 const stats = [
   {
@@ -49,7 +49,7 @@ const CouponsManagementPage = () => {
           </Button>
         </Group>
 
-        <CreateFormModal opened={opened} close={close} />
+        <CreateFormCouponModal opened={opened} close={close} />
 
         <StatsCards stats={stats} />
 

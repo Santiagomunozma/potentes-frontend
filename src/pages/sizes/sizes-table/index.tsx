@@ -1,59 +1,40 @@
 import {
-  Badge,
   Button,
   Card,
   Loader,
   Menu,
   Stack,
   Table,
+  TableThead,
   Text,
 } from "@mantine/core";
 import { IconDotsVertical } from "@tabler/icons-react";
-import { useGetCoupons } from "./service";
-import dayjs from "dayjs";
+import { useGetSizes } from "./service";
 
-const CouponsTable = () => {
-  const { data: coupons, error, isSuccess, isError } = useGetCoupons();
+const SizesTable = () => {
+  const { data: sizes, error, isSuccess, isError } = useGetSizes();
 
   if (isError) {
-    return <Text c="red">Error: {error.message}</Text>;
+    return <div>Error: {error.message}</div>;
   }
 
   if (isSuccess) {
     return (
       <Card withBorder shadow="none" bg="white">
         <Table highlightOnHover verticalSpacing="sm">
-          <Table.Thead>
+          <TableThead>
             <Table.Tr>
               <Table.Th>ID</Table.Th>
-              <Table.Th>Código</Table.Th>
-              <Table.Th>Descuento</Table.Th>
-              <Table.Th>Fecha inicio</Table.Th>
-              <Table.Th>Fecha fin</Table.Th>
-              <Table.Th>Usos</Table.Th>
-              <Table.Th>Estado</Table.Th>
+              <Table.Th>size</Table.Th>
               <Table.Th align="right"></Table.Th>
             </Table.Tr>
-          </Table.Thead>
+          </TableThead>
           <Table.Tbody>
-            {coupons.map((coupon) => (
-              <Table.Tr key={coupon.id}>
-                <Table.Td>{coupon.id}</Table.Td>
+            {sizes.map((size) => (
+              <Table.Tr key={size.id}>
+                <Table.Td>{size.id}</Table.Td>
                 <Table.Td>
-                  <Text fw={500}>{coupon.code}</Text>
-                </Table.Td>
-                <Table.Td>{coupon.discount}</Table.Td>
-                <Table.Td>
-                  {dayjs(coupon.startDate).format("DD/MM/YYYY")}
-                </Table.Td>
-                <Table.Td>
-                  {dayjs(coupon.endDate).format("DD/MM/YYYY")}
-                </Table.Td>
-                <Table.Td>{0}</Table.Td>
-                <Table.Td>
-                  <Badge color={coupon.status === "active" ? "green" : "gray"}>
-                    {coupon.status === "active" ? "Activo" : "Inactivo"}
-                  </Badge>
+                  <Text fw={500}>{size.size}</Text>
                 </Table.Td>
                 <Table.Td align="right">
                   <Menu shadow="md" position="bottom-end" withArrow>
@@ -80,9 +61,9 @@ const CouponsTable = () => {
   return (
     <Stack align="center" justify="center" py="xl">
       <Loader size="lg" color="green" />
-      <Text>Cargando productos...</Text>
+      <Text>Cargando tallas...</Text>
     </Stack>
   );
 };
 
-export { CouponsTable };
+export { SizesTable };

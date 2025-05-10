@@ -4,9 +4,9 @@ import { potentesApi } from "../../../utils/api";
 
 const useGetCoupons = () => {
   return useQuery<Coupon[], Error>({
-    queryKey: ["products"],
+    queryKey: ["coupons"],
     queryFn: async () => {
-      const response = await potentesApi.get<Coupon[]>("/products");
+      const response = await potentesApi.get<Coupon[]>("/coupons");
       return response.data;
     },
   });

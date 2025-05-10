@@ -6,12 +6,14 @@ import { About } from "../pages/about";
 import UsersPage from "../pages/users-management";
 import ProductsManagementPage from "../pages/products-management";
 import SellsManagementPage from "../pages/sells-management";
-import { CuponesPage } from "../pages/cupones";
+import { CouponsManagementPage } from "../pages/cupones";
 import CartView from "../pages/cart";
 import ProductDetailsView from "../pages/product-details";
 import LoginView from "../pages/login";
 import RegisterView from "../pages/register";
 import { CheckoutPage } from "../store";
+import { ColorsManagementPage } from "../pages/colors";
+import { SizesManagementPage } from "../pages/sizes";
 const rootRoute = createRootRoute({
   component: AppLayout,
 });
@@ -55,7 +57,7 @@ const sellsManagementRoute = createRoute({
 const couponsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/coupons",
-  component: CuponesPage,
+  component: CouponsManagementPage,
 });
 
 const cartRoute = createRoute({
@@ -88,6 +90,18 @@ const checkoutPageRoute = createRoute({
   component: CheckoutPage,
 });
 
+const colorsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/colors",
+  component: ColorsManagementPage,
+});
+
+const sizesRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/sizes",
+  component: SizesManagementPage,
+});
+
 const routeTree = rootRoute.addChildren([
   homeRoute,
   productsRoute,
@@ -101,6 +115,8 @@ const routeTree = rootRoute.addChildren([
   loginRoute,
   registerRoute,
   checkoutPageRoute,
+  colorsRoute,
+  sizesRoute,
 ]);
 
 export const router = new Router({ routeTree });
